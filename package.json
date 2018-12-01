@@ -1,0 +1,23 @@
+{
+  "name": "advent-of-code",
+  "version": "1.0.0",
+  "description": "Advent of Code",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "01-2018": "node 2018/day-01-chronal-calibration/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mrMetalWood/advent-of-code.git"
+  },
+  "author": "Malte Modrow <malte.modrow@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mrMetalWood/advent-of-code/issues"
+  },
+  "homepage": "https://github.com/mrMetalWood/advent-of-code#readme",
+  "devDependencies": {
+    "jest": "^23.6.0"
+  }
+}
