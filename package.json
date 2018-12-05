@@ -6,7 +6,10 @@
   "scripts": {
     "test": "jest",
     "01-2018": "node 2018/day-01-chronal-calibration/index.js",
-    "02-2018": "node 2018/day-02-inventory-management-system/index.js"
+    "02-2018": "node 2018/day-02-inventory-management-system/index.js",
+    "03-2018": "node 2018/day-03-slice-it/index.js",
+    "04-2018": "node 2018/day-04-repose-record/index.js",
+    "05-2018": "node 2018/day-05-alchemical-reduction/index.js"
   },
   "repository": {
     "type": "git",
