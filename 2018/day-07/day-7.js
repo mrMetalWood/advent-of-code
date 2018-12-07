@@ -63,12 +63,12 @@ function day72(input, workerCount, additionalTime) {
 
   let time = 0;
   let jobs = [];
-  let jobsInProgress = false;
+  let jobsInProgress = true;
   const order = [];
 
   let available = getInitialAvailable(instructions);
 
-  while (available.length || jobsInProgress) {
+  while (jobsInProgress) {
     available = [...new Set(available)];
 
     jobs = jobs.filter(job => {
@@ -104,9 +104,7 @@ function day72(input, workerCount, additionalTime) {
 
     if (jobs.length === 0) {
       jobsInProgress = false;
-    }
-
-    if (available.length || jobsInProgress) {
+    } else {
       time++;
     }
   }
