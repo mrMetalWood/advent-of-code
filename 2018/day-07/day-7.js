@@ -15,43 +15,49 @@ function prepareData(input) {
   return {instructions};
 }
 
+function sortAlphabet(a, b) {
+  return a.localeCompare(b);
+}
+
 function getInitialAvailable(instructions) {
   const notAvailable = instructions.map(instruction => instruction.step);
 
   return instructions
-    .filter(instruction => !notAvailable.includes(instruction.before))
-    .map(instruction => instruction.before)
-    .sort((a, b) => a.localeCompare(b));
+    .filter(({before}) => !notAvailable.includes(before))
+    .map(({before}) => before)
+    .sort(sortAlphabet);
 }
 
-function getNextAvailableSteps(instructions, nextStep, order) {
+function getNextAvailableSteps(instructions, currentStep, processedItems) {
   return instructions
     .filter(instruction => {
       const hasAllPrerequisites = instructions
-        .filter(i => i.step === instruction.step)
-        .map(i => i.before)
-        .every(prerequisites => order.includes(prerequisites));
+        .filter(({step}) => step === instruction.step)
+        .map(({before}) => before)
+        .every(prerequisites => processedItems.includes(prerequisites));
 
-      return instruction.before === nextStep && hasAllPrerequisites;
+      return instruction.before === currentStep && hasAllPrerequisites;
     })
-    .map(instruction => instruction.step);
+    .map(({step}) => step);
 }
 
 function day71(input) {
   const {instructions} = prepareData(input);
-  const order = [];
+  const processedItems = [];
 
   let available = getInitialAvailable(instructions);
 
   while (available.length) {
     available = [...new Set(available)];
-    const nextStep = available.sort((a, b) => a.localeCompare(b)).shift();
+    const currentStep = available.sort(sortAlphabet).shift();
 
-    order.push(nextStep);
-    available.push(...getNextAvailableSteps(instructions, nextStep, order));
+    processedItems.push(currentStep);
+    available.push(
+      ...getNextAvailableSteps(instructions, currentStep, processedItems)
+    );
   }
 
-  return order.join('');
+  return processedItems.join('');
 }
 
 function day72(input, workerCount, additionalTime) {
@@ -64,7 +70,7 @@ function day72(input, workerCount, additionalTime) {
   let time = 0;
   let jobs = [];
   let jobsInProgress = true;
-  const order = [];
+  const processedItems = [];
 
   let available = getInitialAvailable(instructions);
 
@@ -75,17 +81,17 @@ function day72(input, workerCount, additionalTime) {
       const isDone = job.doneAt <= time;
 
       if (isDone) {
-        order.push(job.name);
-        available.push(...getNextAvailableSteps(instructions, job.name, order));
+        processedItems.push(job.name);
+        available.push(
+          ...getNextAvailableSteps(instructions, job.name, processedItems)
+        );
       }
 
       return !isDone;
     });
 
-    const nextSteps = available.sort((a, b) => a.localeCompare(b));
-
     let newJobCount = 0;
-    nextSteps.forEach(step => {
+    available.sort(sortAlphabet).forEach(step => {
       if (jobs.length < workerCount) {
         jobs.push({
           name: step,
