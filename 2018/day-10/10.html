@@ -1,0 +1,1410 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>The stars align</title>
+
+  <script>
+    const data = [{
+        coords: [42772, -21149],
+        velocity: [-4, 2]
+      },
+      {
+        coords: [42804, -31790],
+        velocity: [-4, 3]
+      },
+      {
+        coords: [-10445, -10502],
+        velocity: [1, 1]
+      },
+      {
+        coords: [-31749, 21438],
+        velocity: [3, -2]
+      },
+      {
+        coords: [-31722, 32074],
+        velocity: [3, -3]
+      },
+      {
+        coords: [53436, -21147],
+        velocity: [-5, 2]
+      },
+      {
+        coords: [-42336, -42437],
+        velocity: [4, 4]
+      },
+      {
+        coords: [-42380, 21435],
+        velocity: [4, -2]
+      },
+      {
+        coords: [21508, -10506],
+        velocity: [-2, 1]
+      },
+      {
+        coords: [-31727, 42725],
+        velocity: [3, -4]
+      },
+      {
+        coords: [-42383, 32083],
+        velocity: [4, -3]
+      },
+      {
+        coords: [42764, 21438],
+        velocity: [-4, -2]
+      },
+      {
+        coords: [-53037, -53086],
+        velocity: [5, 5]
+      },
+      {
+        coords: [53436, -10506],
+        velocity: [-5, 1]
+      },
+      {
+        coords: [-10445, 32083],
+        velocity: [1, -3]
+      },
+      {
+        coords: [-53001, -53081],
+        velocity: [5, 5]
+      },
+      {
+        coords: [-31724, -21151],
+        velocity: [3, 2]
+      },
+      {
+        coords: [-21106, 42720],
+        velocity: [2, -4]
+      },
+      {
+        coords: [10847, -53083],
+        velocity: [-1, 5]
+      },
+      {
+        coords: [21483, -21147],
+        velocity: [-2, 2]
+      },
+      {
+        coords: [53433, -21146],
+        velocity: [-5, 2]
+      },
+      {
+        coords: [32121, 42719],
+        velocity: [-3, -4]
+      },
+      {
+        coords: [10834, 53364],
+        velocity: [-1, -5]
+      },
+      {
+        coords: [-31708, -42434],
+        velocity: [3, 4]
+      },
+      {
+        coords: [-21057, -10497],
+        velocity: [2, 1]
+      },
+      {
+        coords: [-42372, -53082],
+        velocity: [4, 5]
+      },
+      {
+        coords: [32143, -10502],
+        velocity: [-3, 1]
+      },
+      {
+        coords: [-31751, -53078],
+        velocity: [3, 5]
+      },
+      {
+        coords: [-21069, 42720],
+        velocity: [2, -4]
+      },
+      {
+        coords: [-21049, -42432],
+        velocity: [2, 4]
+      },
+      {
+        coords: [-42376, 42727],
+        velocity: [4, -4]
+      },
+      {
+        coords: [42790, -21151],
+        velocity: [-4, 2]
+      },
+      {
+        coords: [10849, 32082],
+        velocity: [-1, -3]
+      },
+      {
+        coords: [-31724, -21142],
+        velocity: [3, 2]
+      },
+      {
+        coords: [32159, -10498],
+        velocity: [-3, 1]
+      },
+      {
+        coords: [32180, -21151],
+        velocity: [-3, 2]
+      },
+      {
+        coords: [21491, 53368],
+        velocity: [-2, -5]
+      },
+      {
+        coords: [32162, -21149],
+        velocity: [-3, 2]
+      },
+      {
+        coords: [21482, -10505],
+        velocity: [-2, 1]
+      },
+      {
+        coords: [-52981, -53079],
+        velocity: [5, 5]
+      },
+      {
+        coords: [42796, 32079],
+        velocity: [-4, -3]
+      },
+      {
+        coords: [-21066, 42720],
+        velocity: [2, -4]
+      },
+      {
+        coords: [10862, 32083],
+        velocity: [-1, -3]
+      },
+      {
+        coords: [21474, -53083],
+        velocity: [-2, 5]
+      },
+      {
+        coords: [-10434, -10497],
+        velocity: [1, 1]
+      },
+      {
+        coords: [-21054, 53364],
+        velocity: [2, -5]
+      },
+      {
+        coords: [21534, 42723],
+        velocity: [-2, -4]
+      },
+      {
+        coords: [10861, -21147],
+        velocity: [-1, 2]
+      },
+      {
+        coords: [10857, -10502],
+        velocity: [-1, 1]
+      },
+      {
+        coords: [53461, 32079],
+        velocity: [-5, -3]
+      },
+      {
+        coords: [32132, -10505],
+        velocity: [-3, 1]
+      },
+      {
+        coords: [-42362, -21142],
+        velocity: [4, 2]
+      },
+      {
+        coords: [-42396, 32074],
+        velocity: [4, -3]
+      },
+      {
+        coords: [53469, -21151],
+        velocity: [-5, 2]
+      },
+      {
+        coords: [-21098, 42723],
+        velocity: [2, -4]
+      },
+      {
+        coords: [-42378, 32080],
+        velocity: [4, -3]
+      },
+      {
+        coords: [-21074, 42726],
+        velocity: [2, -4]
+      },
+      {
+        coords: [10881, -10500],
+        velocity: [-1, 1]
+      },
+      {
+        coords: [21514, 53367],
+        velocity: [-2, -5]
+      },
+      {
+        coords: [42764, -53080],
+        velocity: [-4, 5]
+      },
+      {
+        coords: [32151, 53368],
+        velocity: [-3, -5]
+      },
+      {
+        coords: [-21090, 21437],
+        velocity: [2, -2]
+      },
+      {
+        coords: [10877, -53078],
+        velocity: [-1, 5]
+      },
+      {
+        coords: [-10445, -31796],
+        velocity: [1, 3]
+      },
+      {
+        coords: [42796, 42722],
+        velocity: [-4, -4]
+      },
+      {
+        coords: [-31740, -21147],
+        velocity: [3, 2]
+      },
+      {
+        coords: [-42344, -53083],
+        velocity: [4, 5]
+      },
+      {
+        coords: [-21087, -31794],
+        velocity: [2, 3]
+      },
+      {
+        coords: [-31691, 32082],
+        velocity: [3, -3]
+      },
+      {
+        coords: [21490, -31790],
+        velocity: [-2, 3]
+      },
+      {
+        coords: [42792, -10506],
+        velocity: [-4, 1]
+      },
+      {
+        coords: [53462, 32074],
+        velocity: [-5, -3]
+      },
+      {
+        coords: [-53025, 53366],
+        velocity: [5, -5]
+      },
+      {
+        coords: [-31722, 21438],
+        velocity: [3, -2]
+      },
+      {
+        coords: [53469, 10786],
+        velocity: [-5, -1]
+      },
+      {
+        coords: [10841, 32081],
+        velocity: [-1, -3]
+      },
+      {
+        coords: [53449, 21431],
+        velocity: [-5, -2]
+      },
+      {
+        coords: [-21074, -10501],
+        velocity: [2, 1]
+      },
+      {
+        coords: [21487, -53084],
+        velocity: [-2, 5]
+      },
+      {
+        coords: [-53015, -53082],
+        velocity: [5, 5]
+      },
+      {
+        coords: [42777, -31787],
+        velocity: [-4, 3]
+      },
+      {
+        coords: [42764, -10502],
+        velocity: [-4, 1]
+      },
+      {
+        coords: [53422, 10787],
+        velocity: [-5, -1]
+      },
+      {
+        coords: [42772, -10503],
+        velocity: [-4, 1]
+      },
+      {
+        coords: [53465, 32081],
+        velocity: [-5, -3]
+      },
+      {
+        coords: [-10421, 10793],
+        velocity: [1, -1]
+      },
+      {
+        coords: [42815, -42432],
+        velocity: [-4, 4]
+      },
+      {
+        coords: [-21106, -53079],
+        velocity: [2, 5]
+      },
+      {
+        coords: [-53033, 53369],
+        velocity: [5, -5]
+      },
+      {
+        coords: [42766, 53368],
+        velocity: [-4, -5]
+      },
+      {
+        coords: [42767, -21151],
+        velocity: [-4, 2]
+      },
+      {
+        coords: [21526, -31789],
+        velocity: [-2, 3]
+      },
+      {
+        coords: [-21082, -21148],
+        velocity: [2, 2]
+      },
+      {
+        coords: [53410, -21147],
+        velocity: [-5, 2]
+      },
+      {
+        coords: [-31691, -10500],
+        velocity: [3, 1]
+      },
+      {
+        coords: [42805, 32078],
+        velocity: [-4, -3]
+      },
+      {
+        coords: [-42378, -31790],
+        velocity: [4, 3]
+      },
+      {
+        coords: [-21050, -21143],
+        velocity: [2, 2]
+      },
+      {
+        coords: [-21106, -42436],
+        velocity: [2, 4]
+      },
+      {
+        coords: [-53001, 53365],
+        velocity: [5, -5]
+      },
+      {
+        coords: [53469, -21145],
+        velocity: [-5, 2]
+      },
+      {
+        coords: [10833, -31796],
+        velocity: [-1, 3]
+      },
+      {
+        coords: [-53009, -10498],
+        velocity: [5, 1]
+      },
+      {
+        coords: [32159, -31789],
+        velocity: [-3, 3]
+      },
+      {
+        coords: [-53007, -53077],
+        velocity: [5, 5]
+      },
+      {
+        coords: [21474, -21149],
+        velocity: [-2, 2]
+      },
+      {
+        coords: [53427, -53083],
+        velocity: [-5, 5]
+      },
+      {
+        coords: [10861, 42720],
+        velocity: [-1, -4]
+      },
+      {
+        coords: [-53017, 10786],
+        velocity: [5, -1]
+      },
+      {
+        coords: [-42335, -42441],
+        velocity: [4, 4]
+      },
+      {
+        coords: [-31751, -42432],
+        velocity: [3, 4]
+      },
+      {
+        coords: [32171, 21429],
+        velocity: [-3, -2]
+      },
+      {
+        coords: [-53016, -53086],
+        velocity: [5, 5]
+      },
+      {
+        coords: [21522, 21436],
+        velocity: [-2, -2]
+      },
+      {
+        coords: [-53009, -53079],
+        velocity: [5, 5]
+      },
+      {
+        coords: [53433, 42721],
+        velocity: [-5, -4]
+      },
+      {
+        coords: [53420, -42441],
+        velocity: [-5, 4]
+      },
+      {
+        coords: [42777, -10504],
+        velocity: [-4, 1]
+      },
+      {
+        coords: [-10416, 32074],
+        velocity: [1, -3]
+      },
+      {
+        coords: [-42396, 10788],
+        velocity: [4, -1]
+      },
+      {
+        coords: [21490, 10791],
+        velocity: [-2, -1]
+      },
+      {
+        coords: [32128, -21147],
+        velocity: [-3, 2]
+      },
+      {
+        coords: [53461, -21143],
+        velocity: [-5, 2]
+      },
+      {
+        coords: [-21063, -21149],
+        velocity: [2, 2]
+      },
+      {
+        coords: [-31743, -31792],
+        velocity: [3, 3]
+      },
+      {
+        coords: [21514, 21432],
+        velocity: [-2, -2]
+      },
+      {
+        coords: [10861, 10791],
+        velocity: [-1, -1]
+      },
+      {
+        coords: [10881, -31792],
+        velocity: [-1, 3]
+      },
+      {
+        coords: [10889, -31795],
+        velocity: [-1, 3]
+      },
+      {
+        coords: [32143, -21145],
+        velocity: [-3, 2]
+      },
+      {
+        coords: [-21093, -42439],
+        velocity: [2, 4]
+      },
+      {
+        coords: [-10450, 21433],
+        velocity: [1, -2]
+      },
+      {
+        coords: [-31719, 21430],
+        velocity: [3, -2]
+      },
+      {
+        coords: [10865, 53373],
+        velocity: [-1, -5]
+      },
+      {
+        coords: [-10405, -21144],
+        velocity: [1, 2]
+      },
+      {
+        coords: [21534, -42433],
+        velocity: [-2, 4]
+      },
+      {
+        coords: [-31727, -53083],
+        velocity: [3, 5]
+      },
+      {
+        coords: [-53021, 21437],
+        velocity: [5, -2]
+      },
+      {
+        coords: [53449, -42434],
+        velocity: [-5, 4]
+      },
+      {
+        coords: [-21046, 10789],
+        velocity: [2, -1]
+      },
+      {
+        coords: [21518, 32082],
+        velocity: [-2, -3]
+      },
+      {
+        coords: [-31727, -10506],
+        velocity: [3, 1]
+      },
+      {
+        coords: [-53033, 10793],
+        velocity: [5, -1]
+      },
+      {
+        coords: [10842, -10498],
+        velocity: [-1, 1]
+      },
+      {
+        coords: [53425, 32075],
+        velocity: [-5, -3]
+      },
+      {
+        coords: [-53004, 32082],
+        velocity: [5, -3]
+      },
+      {
+        coords: [-53016, -53082],
+        velocity: [5, 5]
+      },
+      {
+        coords: [-21098, 21435],
+        velocity: [2, -2]
+      },
+      {
+        coords: [-10417, 42720],
+        velocity: [1, -4]
+      },
+      {
+        coords: [-42363, 21429],
+        velocity: [4, -2]
+      },
+      {
+        coords: [32151, 10790],
+        velocity: [-3, -1]
+      },
+      {
+        coords: [-53025, 21431],
+        velocity: [5, -2]
+      },
+      {
+        coords: [-10437, -42435],
+        velocity: [1, 4]
+      },
+      {
+        coords: [-31735, -10502],
+        velocity: [3, 1]
+      },
+      {
+        coords: [-21098, -21149],
+        velocity: [2, 2]
+      },
+      {
+        coords: [10830, 10784],
+        velocity: [-1, -1]
+      },
+      {
+        coords: [10838, -21151],
+        velocity: [-1, 2]
+      },
+      {
+        coords: [-21085, -21142],
+        velocity: [2, 2]
+      },
+      {
+        coords: [32119, -53079],
+        velocity: [-3, 5]
+      },
+      {
+        coords: [-31700, 21438],
+        velocity: [3, -2]
+      },
+      {
+        coords: [-31714, -31795],
+        velocity: [3, 3]
+      },
+      {
+        coords: [32135, -10504],
+        velocity: [-3, 1]
+      },
+      {
+        coords: [10889, -21149],
+        velocity: [-1, 2]
+      },
+      {
+        coords: [-31742, -53086],
+        velocity: [3, 5]
+      },
+      {
+        coords: [-31726, -42432],
+        velocity: [3, 4]
+      },
+      {
+        coords: [-31727, -53079],
+        velocity: [3, 5]
+      },
+      {
+        coords: [-42369, -31792],
+        velocity: [4, 3]
+      },
+      {
+        coords: [10830, -42437],
+        velocity: [-1, 4]
+      },
+      {
+        coords: [32179, 42725],
+        velocity: [-3, -4]
+      },
+      {
+        coords: [21483, -31796],
+        velocity: [-2, 3]
+      },
+      {
+        coords: [53435, 32074],
+        velocity: [-5, -3]
+      },
+      {
+        coords: [32132, -31788],
+        velocity: [-3, 3]
+      },
+      {
+        coords: [53449, 10787],
+        velocity: [-5, -1]
+      },
+      {
+        coords: [-21066, -42439],
+        velocity: [2, 4]
+      },
+      {
+        coords: [-21065, 10789],
+        velocity: [2, -1]
+      },
+      {
+        coords: [-31693, -31787],
+        velocity: [3, 3]
+      },
+      {
+        coords: [-42380, 42727],
+        velocity: [4, -4]
+      },
+      {
+        coords: [42788, 10785],
+        velocity: [-4, -1]
+      },
+      {
+        coords: [-21054, -21150],
+        velocity: [2, 2]
+      },
+      {
+        coords: [42772, -42434],
+        velocity: [-4, 4]
+      },
+      {
+        coords: [-31722, 42719],
+        velocity: [3, -4]
+      },
+      {
+        coords: [10837, -31794],
+        velocity: [-1, 3]
+      },
+      {
+        coords: [21498, -42436],
+        velocity: [-2, 4]
+      },
+      {
+        coords: [42797, 10793],
+        velocity: [-4, -1]
+      },
+      {
+        coords: [-42372, 42724],
+        velocity: [4, -4]
+      },
+      {
+        coords: [32171, 10787],
+        velocity: [-3, -1]
+      },
+      {
+        coords: [-21085, -42441],
+        velocity: [2, 4]
+      },
+      {
+        coords: [-21046, 10791],
+        velocity: [2, -1]
+      },
+      {
+        coords: [-31709, 53370],
+        velocity: [3, -5]
+      },
+      {
+        coords: [21503, 21438],
+        velocity: [-2, -2]
+      },
+      {
+        coords: [-31695, -10498],
+        velocity: [3, 1]
+      },
+      {
+        coords: [-10411, -53077],
+        velocity: [1, 5]
+      },
+      {
+        coords: [32169, 21438],
+        velocity: [-3, -2]
+      },
+      {
+        coords: [53454, -42441],
+        velocity: [-5, 4]
+      },
+      {
+        coords: [21487, 10785],
+        velocity: [-2, -1]
+      },
+      {
+        coords: [-31711, 10792],
+        velocity: [3, -1]
+      },
+      {
+        coords: [-21085, -10497],
+        velocity: [2, 1]
+      },
+      {
+        coords: [-42360, -42432],
+        velocity: [4, 4]
+      },
+      {
+        coords: [-21090, 21434],
+        velocity: [2, -2]
+      },
+      {
+        coords: [-31739, 32074],
+        velocity: [3, -3]
+      },
+      {
+        coords: [53417, -10502],
+        velocity: [-5, 1]
+      },
+      {
+        coords: [-42364, -21149],
+        velocity: [4, 2]
+      },
+      {
+        coords: [42767, -21147],
+        velocity: [-4, 2]
+      },
+      {
+        coords: [21502, 10784],
+        velocity: [-2, -1]
+      },
+      {
+        coords: [-53016, -53077],
+        velocity: [5, 5]
+      },
+      {
+        coords: [-10401, 10787],
+        velocity: [1, -1]
+      },
+      {
+        coords: [-31715, 53373],
+        velocity: [3, -5]
+      },
+      {
+        coords: [10869, 53364],
+        velocity: [-1, -5]
+      },
+      {
+        coords: [10848, -10499],
+        velocity: [-1, 1]
+      },
+      {
+        coords: [10880, -10497],
+        velocity: [-1, 1]
+      },
+      {
+        coords: [-31749, 32074],
+        velocity: [3, -3]
+      },
+      {
+        coords: [-42388, -31788],
+        velocity: [4, 3]
+      },
+      {
+        coords: [-10440, 42719],
+        velocity: [1, -4]
+      },
+      {
+        coords: [10857, -53082],
+        velocity: [-1, 5]
+      },
+      {
+        coords: [53461, -21147],
+        velocity: [-5, 2]
+      },
+      {
+        coords: [-21063, -10499],
+        velocity: [2, 1]
+      },
+      {
+        coords: [32124, 42728],
+        velocity: [-3, -4]
+      },
+      {
+        coords: [-21102, 10788],
+        velocity: [2, -1]
+      },
+      {
+        coords: [32179, 32079],
+        velocity: [-3, -3]
+      },
+      {
+        coords: [10837, 32075],
+        velocity: [-1, -3]
+      },
+      {
+        coords: [-42383, 32077],
+        velocity: [4, -3]
+      },
+      {
+        coords: [42769, 21429],
+        velocity: [-4, -2]
+      },
+      {
+        coords: [21495, -10497],
+        velocity: [-2, 1]
+      },
+      {
+        coords: [32151, -42436],
+        velocity: [-3, 4]
+      },
+      {
+        coords: [32129, 10784],
+        velocity: [-3, -1]
+      },
+      {
+        coords: [-31750, 10793],
+        velocity: [3, -1]
+      },
+      {
+        coords: [53449, -42432],
+        velocity: [-5, 4]
+      },
+      {
+        coords: [32128, -42437],
+        velocity: [-3, 4]
+      },
+      {
+        coords: [-42377, -21144],
+        velocity: [4, 2]
+      },
+      {
+        coords: [10833, 53373],
+        velocity: [-1, -5]
+      },
+      {
+        coords: [32143, 32083],
+        velocity: [-3, -3]
+      },
+      {
+        coords: [42816, -31792],
+        velocity: [-4, 3]
+      },
+      {
+        coords: [-31727, 42728],
+        velocity: [3, -4]
+      },
+      {
+        coords: [-21103, 42719],
+        velocity: [2, -4]
+      },
+      {
+        coords: [-42368, 21438],
+        velocity: [4, -2]
+      },
+      {
+        coords: [-21098, -10500],
+        velocity: [2, 1]
+      },
+      {
+        coords: [-31735, -10506],
+        velocity: [3, 1]
+      },
+      {
+        coords: [-42391, 32074],
+        velocity: [4, -3]
+      },
+      {
+        coords: [-21095, -53081],
+        velocity: [2, 5]
+      },
+      {
+        coords: [-21079, -21147],
+        velocity: [2, 2]
+      },
+      {
+        coords: [32151, 53366],
+        velocity: [-3, -5]
+      },
+      {
+        coords: [-42396, 10785],
+        velocity: [4, -1]
+      },
+      {
+        coords: [32119, 21434],
+        velocity: [-3, -2]
+      },
+      {
+        coords: [-31716, -42432],
+        velocity: [3, 4]
+      },
+      {
+        coords: [32162, 32081],
+        velocity: [-3, -3]
+      },
+      {
+        coords: [10845, 21430],
+        velocity: [-1, -2]
+      },
+      {
+        coords: [32119, -21149],
+        velocity: [-3, 2]
+      },
+      {
+        coords: [53461, -10504],
+        velocity: [-5, 1]
+      },
+      {
+        coords: [-21074, -42438],
+        velocity: [2, 4]
+      },
+      {
+        coords: [10873, 53372],
+        velocity: [-1, -5]
+      },
+      {
+        coords: [-42380, -31792],
+        velocity: [4, 3]
+      },
+      {
+        coords: [-31751, 10788],
+        velocity: [3, -1]
+      },
+      {
+        coords: [-31735, -53086],
+        velocity: [3, 5]
+      },
+      {
+        coords: [21499, 10788],
+        velocity: [-2, -1]
+      },
+      {
+        coords: [32147, 10784],
+        velocity: [-3, -1]
+      },
+      {
+        coords: [-10409, 42721],
+        velocity: [1, -4]
+      },
+      {
+        coords: [21492, -42435],
+        velocity: [-2, 4]
+      },
+      {
+        coords: [10885, -42434],
+        velocity: [-1, 4]
+      },
+      {
+        coords: [53409, -42433],
+        velocity: [-5, 4]
+      },
+      {
+        coords: [-31699, 10784],
+        velocity: [3, -1]
+      },
+      {
+        coords: [53459, -31787],
+        velocity: [-5, 3]
+      },
+      {
+        coords: [-21093, -42433],
+        velocity: [2, 4]
+      },
+      {
+        coords: [53436, -42432],
+        velocity: [-5, 4]
+      },
+      {
+        coords: [42764, 42727],
+        velocity: [-4, -4]
+      },
+      {
+        coords: [-52982, 10793],
+        velocity: [5, -1]
+      },
+      {
+        coords: [-21061, -53077],
+        velocity: [2, 5]
+      },
+      {
+        coords: [21525, 10784],
+        velocity: [-2, -1]
+      },
+      {
+        coords: [-10401, -53083],
+        velocity: [1, 5]
+      },
+      {
+        coords: [10833, 10793],
+        velocity: [-1, -1]
+      },
+      {
+        coords: [42767, 10793],
+        velocity: [-4, -1]
+      },
+      {
+        coords: [10869, 21429],
+        velocity: [-1, -2]
+      },
+      {
+        coords: [-42370, -53082],
+        velocity: [4, 5]
+      },
+      {
+        coords: [10881, 53372],
+        velocity: [-1, -5]
+      },
+      {
+        coords: [-10461, 21429],
+        velocity: [1, -2]
+      },
+      {
+        coords: [-21080, -42432],
+        velocity: [2, 4]
+      },
+      {
+        coords: [42817, 10784],
+        velocity: [-4, -1]
+      },
+      {
+        coords: [42805, -10501],
+        velocity: [-4, 1]
+      },
+      {
+        coords: [-42371, -31796],
+        velocity: [4, 3]
+      },
+      {
+        coords: [-42388, 32079],
+        velocity: [4, -3]
+      },
+      {
+        coords: [21490, 21436],
+        velocity: [-2, -2]
+      },
+      {
+        coords: [-10421, 42726],
+        velocity: [1, -4]
+      },
+      {
+        coords: [21492, 42722],
+        velocity: [-2, -4]
+      },
+      {
+        coords: [42799, 42728],
+        velocity: [-4, -4]
+      },
+      {
+        coords: [-53025, 10787],
+        velocity: [5, -1]
+      },
+      {
+        coords: [21474, -42441],
+        velocity: [-2, 4]
+      },
+      {
+        coords: [53433, 10792],
+        velocity: [-5, -1]
+      },
+      {
+        coords: [32130, -31796],
+        velocity: [-3, 3]
+      },
+      {
+        coords: [53438, -10506],
+        velocity: [-5, 1]
+      },
+      {
+        coords: [-10445, -21146],
+        velocity: [1, 2]
+      },
+      {
+        coords: [21518, -10505],
+        velocity: [-2, 1]
+      },
+      {
+        coords: [32151, 42722],
+        velocity: [-3, -4]
+      },
+      {
+        coords: [21514, 42723],
+        velocity: [-2, -4]
+      },
+      {
+        coords: [-31739, 21433],
+        velocity: [3, -2]
+      },
+      {
+        coords: [-21094, -10506],
+        velocity: [2, 1]
+      },
+      {
+        coords: [32129, -31792],
+        velocity: [-3, 3]
+      },
+      {
+        coords: [42824, -53084],
+        velocity: [-4, 5]
+      },
+      {
+        coords: [-52999, -42435],
+        velocity: [5, 4]
+      },
+      {
+        coords: [53409, -31794],
+        velocity: [-5, 3]
+      },
+      {
+        coords: [-42353, -10504],
+        velocity: [4, 1]
+      },
+      {
+        coords: [32132, -42432],
+        velocity: [-3, 4]
+      },
+      {
+        coords: [42780, -42436],
+        velocity: [-4, 4]
+      },
+      {
+        coords: [10888, -31796],
+        velocity: [-1, 3]
+      },
+      {
+        coords: [-10421, -53077],
+        velocity: [1, 5]
+      },
+      {
+        coords: [-53033, -21150],
+        velocity: [5, 2]
+      },
+      {
+        coords: [21494, -53085],
+        velocity: [-2, 5]
+      },
+      {
+        coords: [21533, -10506],
+        velocity: [-2, 1]
+      },
+      {
+        coords: [53421, 32080],
+        velocity: [-5, -3]
+      },
+      {
+        coords: [32159, -10501],
+        velocity: [-3, 1]
+      },
+      {
+        coords: [10881, 21436],
+        velocity: [-1, -2]
+      },
+      {
+        coords: [21493, 32081],
+        velocity: [-2, -3]
+      },
+      {
+        coords: [-42363, 53364],
+        velocity: [4, -5]
+      },
+      {
+        coords: [-52993, 42727],
+        velocity: [5, -4]
+      },
+      {
+        coords: [10841, -31792],
+        velocity: [-1, 3]
+      },
+      {
+        coords: [10871, -53083],
+        velocity: [-1, 5]
+      },
+      {
+        coords: [-42379, 53369],
+        velocity: [4, -5]
+      },
+      {
+        coords: [21518, 21430],
+        velocity: [-2, -2]
+      },
+      {
+        coords: [-31727, 32078],
+        velocity: [3, -3]
+      },
+      {
+        coords: [-42361, -31796],
+        velocity: [4, 3]
+      },
+      {
+        coords: [32123, -21142],
+        velocity: [-3, 2]
+      },
+      {
+        coords: [10856, 10784],
+        velocity: [-1, -1]
+      },
+      {
+        coords: [10853, 21430],
+        velocity: [-1, -2]
+      },
+      {
+        coords: [21498, -31787],
+        velocity: [-2, 3]
+      },
+      {
+        coords: [-21098, -10506],
+        velocity: [2, 1]
+      },
+      {
+        coords: [-42388, -10501],
+        velocity: [4, 1]
+      },
+      {
+        coords: [-42395, -31796],
+        velocity: [4, 3]
+      },
+      {
+        coords: [10870, -42436],
+        velocity: [-1, 4]
+      },
+      {
+        coords: [42824, -10501],
+        velocity: [-4, 1]
+      },
+      {
+        coords: [42800, 10784],
+        velocity: [-4, -1]
+      }
+    ]
+  </script>
+
+  <style>
+    html,
+    body {
+      padding: 0;
+      margin: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <canvas></canvas>
+
+  <script>
+    let minX = 0
+    let maxX = 0
+    let minY = 0
+    let maxY = 0
+
+    function updateBB() {
+      minX = 0;
+      maxX = 0;
+      minY = 0;
+      maxY = 0;
+
+      data.forEach(entry => {
+        if (entry.coords[0] < minX) {
+          minX = entry.coords[0]
+        }
+        if (entry.coords[0] > maxX) {
+          maxX = entry.coords[0]
+        }
+        if (entry.coords[1] < minY) {
+          minY = entry.coords[1]
+        }
+        if (entry.coords[1] > maxY) {
+          maxY = entry.coords[1]
+        }
+      })
+    }
+
+    updateBB();
+
+    const canvas = document.querySelector("canvas");
+    const ctx = canvas.getContext('2d');
+    canvas.width = (Math.abs(minX) + maxX) / 1000 * 5 + 10
+    canvas.height = (Math.abs(minY) + maxY) / 1000 * 5 + 10
+
+    const scale = (num, inMin, inMax, outMin, outMax) => {
+      return (num - inMin) * (outMax - outMin) / (inMax - inMin) + outMin;
+    }
+
+    let bbSize = (maxY - minY) * (maxX - minX);
+    let seconds = -1;
+
+    const inter = setInterval(() => {
+      updateBB();
+      const newBB = (maxY - minY) * (maxX - minX);
+
+      if (newBB > bbSize) {
+        console.log(`${seconds} seconds!`);
+        clearInterval(inter);
+      } else {
+        seconds++;
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = "black";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        data.forEach(entry => {
+          const x = entry.coords[0]
+          const y = entry.coords[1]
+          ctx.fillStyle = "deeppink";
+          ctx.fillRect(scale(x, minX, maxX, 0, 532), scale(y, minY, maxY, 0, 532), 1, 1);
+
+          entry.coords[0] += entry.velocity[0]
+          entry.coords[1] += entry.velocity[1]
+
+        })
+        bbSize = newBB;
+      }
+
+    }, 0);
+  </script>
+</body>
+
+</html>
