@@ -5,14 +5,15 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "01-2018": "node 2018/day-01-chronal-calibration/index.js",
-    "02-2018": "node 2018/day-02-inventory-management-system/index.js",
-    "03-2018": "node 2018/day-03-slice-it/index.js",
-    "04-2018": "node 2018/day-04-repose-record/index.js",
-    "05-2018": "node 2018/day-05-alchemical-reduction/index.js",
-    "06-2018": "node 2018/day-06/index.js",
-    "07-2018": "node 2018/day-07/index.js",
-    "08-2018": "node 2018/day-08/index.js"
+    "01-18": "node 2018/day-01-chronal-calibration/index.js",
+    "02-18": "node 2018/day-02-inventory-management-system/index.js",
+    "03-18": "node 2018/day-03-slice-it/index.js",
+    "04-18": "node 2018/day-04-repose-record/index.js",
+    "05-18": "node 2018/day-05-alchemical-reduction/index.js",
+    "06-18": "node 2018/day-06/index.js",
+    "07-18": "node 2018/day-07/index.js",
+    "08-18": "node 2018/day-08/index.js",
+    "09-18": "node 2018/day-09/index.js"
   },
   "repository": {
     "type": "git",
