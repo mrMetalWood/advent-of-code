@@ -2,6 +2,7 @@ const {raw} = window;
 
 let cars = [];
 let crashedCars = [];
+const crashedLocations = [];
 let pause = false;
 let tickCount = 0;
 
@@ -151,6 +152,7 @@ const tick = () => {
         if (c.x === car.x && c.y === car.y) {
           console.log('Bammm, crashed', car, c);
           crashedCars.push(c.id, car.id);
+          crashedLocations.push({x: car.x, y: car.y});
           state[car.y][car.x] = c.placeholder;
         }
       });
@@ -173,15 +175,19 @@ const tick = () => {
     stateToRender[y][x] = `<span class="car">${stateToRender[y][x]}</span>`;
   });
 
+  crashedLocations.forEach(car => {
+    const {x, y} = car;
+    stateToRender[y][x] = `<span class="crashed">${stateToRender[y][x]}</span>`;
+  });
+
   document.body.innerHTML = stateToRender.map(line => line.join('')).join('\n');
-  // document.body.textContent = state.map(line => line.join('')).join('\n');
 
   if (tickCount % 500 === 0) {
     console.log('tick', tickCount);
   }
 
   if (!pause && cars.length > 1) {
-    setTimeout(tick, 10);
+    setTimeout(tick, 1);
   }
 };
 
