@@ -16,7 +16,8 @@
     "09-18": "node 2018/day-09/index.js",
     "11-18": "node 2018/day-11/index.js",
     "12-18": "node 2018/day-12/index.js",
-    "14-18": "node 2018/day-14/index.js"
+    "14-18": "node 2018/day-14/index.js",
+    "18-18": "node 2018/day-18/day-18.js"
   },
   "repository": {
     "type": "git",

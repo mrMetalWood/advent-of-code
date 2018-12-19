@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+
+  <style>
+    .grid,
+    .overlay {
+      position: absolute;
+      white-space: pre;
+      font-family: monospace;
+    }
+
+    .overlay {
+      opacity: 0.3;
+      z-index: 1;
+    }
+
+    .inrange {
+      color: white;
+      background: red;
+      display: inline-block;
+    }
+
+    .nearest {
+      color: white;
+      background: orange;
+      display: inline-block;
+    }
+
+    .unit {
+      color: white;
+      background: blue;
+      display: inline-block;
+    }
+
+    .selected {
+      color: white;
+      background: green;
+      display: inline-block;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="overlay"></div>
+  <div class="grid"></div>
+  <script src="raw-state.js"></script>
+  <script src="main.js"></script>
+</body>
+
+</html>
