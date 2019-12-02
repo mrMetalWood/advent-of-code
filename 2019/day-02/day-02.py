@@ -9,15 +9,13 @@ def run_intcode_program(noun, verb):
     memory[1] = noun
     memory[2] = verb
 
-    while True:
+    while memory[pointer] != 99:
         opcode, param1, param2, address = memory[pointer: pointer + 4]
 
         if opcode == 1:
             memory[address] = memory[param1] + memory[param2]
         elif opcode == 2:
             memory[address] = memory[param1] * memory[param2]
-        elif opcode == 99:
-            break
 
         pointer += 4
 
