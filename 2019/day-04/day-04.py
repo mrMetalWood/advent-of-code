@@ -1,27 +1,24 @@
 import itertools
 
-password_min = 168630
-password_max = 718098
-
 
 def parse_password_range():
     passwords = {}
 
-    for possible_password in range(password_min, password_max + 1):
-        decreased = double = standalone_double = False
+    for possible_password in range(168630, 718098 + 1):
+        decreased = atleast_double = exact_double = False
         last_digit = 0
 
         for current, group in itertools.groupby(list(str(possible_password)), lambda x: x):
-            number_count = len(list(group))
+            count = len(list(group))
 
-            double = True if number_count >= 2 else double
-            standalone_double = True if number_count == 2 else standalone_double
+            atleast_double = True if count >= 2 else atleast_double
+            exact_double = True if count == 2 else exact_double
             decreased = True if int(current) < last_digit else decreased
 
             last_digit = int(current)
 
-        passwords.setdefault(
-            possible_password, (decreased, double, standalone_double)
+        passwords[possible_password] = (
+            decreased, atleast_double, exact_double
         )
 
     return passwords
