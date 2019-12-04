@@ -91,3 +91,33 @@ def part2():
 
 print(f"Part 1: {part1()}")
 print(f"Part 2: {part2()}")
+
+
+# Super smooth solution by fogleman <3  https://github.com/fogleman
+# with open('2019/day-03/input.txt', 'r') as file:
+#     wires = [wire.strip() for wire in file.readlines()]
+
+# DIRS = {
+#     'U': (0, -1), 'D': (0, 1),
+#     'L': (-1, 0), 'R': (1, 0)
+# }
+
+
+# def parse(line):
+#     result = {}
+#     x = y = steps = 0
+#     for token in line.split(','):
+#         (dx, dy), n = DIRS[token[0]], int(token[1:])
+#         for _ in range(n):
+#             x, y, steps = x + dx, y + dy, steps + 1
+#             result.setdefault((x, y), steps)
+#     return result
+
+
+# a = parse(wires[0])
+# b = parse(wires[1])
+# x = set(a) & set(b)
+
+
+# print(min(sum(map(abs, p)) for p in x))
+# print(min(a[k] + b[k] for k in x))
