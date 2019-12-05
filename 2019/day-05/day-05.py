@@ -10,12 +10,12 @@ def get_value(pointer, memory, memory_index, param_mode):
 def run_intcode_program(user_input):
     memory, pointer = numbers.copy(), 0
 
+    def is_safe(index):
+        return (memory[pointer + index]) < len(memory)
+
     while int(str(memory[pointer])[-2:]) != 99:
         p2_mode, p1_mode, *opcode_split = str(memory[pointer]).zfill(5)[1:]
         opcode = int(''.join(opcode_split))
-
-        def is_safe(index):
-            return (memory[pointer + index]) < len(memory)
 
         p1 = get_value(pointer,  memory, 1, p1_mode) if is_safe(1) else None
         p2 = get_value(pointer, memory, 2, p2_mode) if is_safe(2) else None
