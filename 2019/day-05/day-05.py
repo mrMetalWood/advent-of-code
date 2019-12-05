@@ -2,73 +2,55 @@ with open('2019/day-05/input.txt', 'r') as file:
     numbers = list(map(int, file.read().split(',')))
 
 
-def get_value(pointer, instruction, memory, i_idx, m_idx):
-    position_mode = instruction[i_idx] == '0'
-    param_value = memory[pointer + m_idx]
-
-    return memory[param_value] if position_mode else param_value
+def get_value(pointer, memory, memory_index, param_mode):
+    value = memory[pointer + memory_index]
+    return memory[value] if param_mode == '0' else value
 
 
-def run_intcode_program(input):
-    memory = numbers.copy()
-    pointer = 0
+def run_intcode_program(user_input):
+    memory, pointer = numbers.copy(), 0
 
     while int(str(memory[pointer])[-2:]) != 99:
-        instruction = str(memory[pointer]).zfill(5)
-        opcode = int(instruction[-2:])
+        p2_mode, p1_mode, *opcode_split = str(memory[pointer]).zfill(5)[1:]
+        opcode = int(''.join(opcode_split))
 
-        try:
-            has_params = opcode != 3 and opcode != 4
-            address_params = memory[pointer + 3]
-            address_no_params = memory[pointer + 1]
-            address = address_params if has_params else address_no_params
-        except IndexError:
-            pass
+        def is_safe(index):
+            return (memory[pointer + index]) < len(memory)
 
-        try:
-            param1 = get_value(pointer, instruction, memory, -3, 1)
-        except IndexError:
-            pass
+        p1 = get_value(pointer,  memory, 1, p1_mode) if is_safe(1) else None
+        p2 = get_value(pointer, memory, 2, p2_mode) if is_safe(2) else None
 
-        try:
-            param2 = get_value(pointer, instruction, memory, -4, 2)
-        except IndexError:
-            pass
+        addr_params, addr_no_params = memory[pointer + 3], memory[pointer + 1]
+        has_params = opcode not in [3, 4]
+        address = addr_params if has_params else addr_no_params
 
         # input
         if opcode == 3:
-            address = memory[pointer + 1]
-            memory[address] = input
-            pointer += 2
+            memory[address] = user_input
         # output
         elif opcode == 4:
-            output = get_value(pointer, instruction, memory, -3, 1)
-            pointer += 2
-            print('OUTPUT: ', output)
+            print(f'Output ({user_input}): ', p1)
         # add
         elif opcode == 1:
-            memory[address] = param1 + param2
-            pointer += 4
+            memory[address] = p1 + p2
         # mul
         elif opcode == 2:
-            memory[address] = param1 * param2
-            pointer += 4
+            memory[address] = p1 * p2
         # jump if true
         elif opcode == 5:
-            pointer = param2 if param1 != 0 else pointer + 3
+            pointer = p2 if p1 != 0 else pointer + 3
         # jump if false
         elif opcode == 6:
-            pointer = param2 if param1 == 0 else pointer + 3
+            pointer = p2 if p1 == 0 else pointer + 3
         # less than
         elif opcode == 7:
-            memory[address] = 1 if param1 < param2 else 0
-            pointer += 4
+            memory[address] = 1 if p1 < p2 else 0
         # equals
         elif opcode == 8:
-            memory[address] = 1 if param1 == param2 else 0
-            pointer += 4
+            memory[address] = 1 if p1 == p2 else 0
 
-    print('Halting...')
+        pointer += 4 if opcode in [1, 2, 7, 8] else 0
+        pointer += 2 if opcode in [3, 4] else 0
 
 
 run_intcode_program(1)  # part 1
