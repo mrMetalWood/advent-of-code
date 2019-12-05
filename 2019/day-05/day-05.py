@@ -71,13 +71,5 @@ def run_intcode_program(input):
     print('Halting...')
 
 
-def part1():
-    run_intcode_program(1)
-
-
-def part2():
-    run_intcode_program(5)
-
-
-part1()
-part2()
+run_intcode_program(1)  # part 1
+run_intcode_program(5)  # part 2
