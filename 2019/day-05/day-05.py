@@ -23,18 +23,18 @@ def run_intcode_program(user_input):
         has_params = opcode not in [3, 4]
         address = addr_params if has_params else addr_no_params
 
-        # input
-        if opcode == 3:
-            memory[address] = user_input
-        # output
-        elif opcode == 4:
-            print(f'Output ({user_input}): ', p1)
         # add
-        elif opcode == 1:
+        if opcode == 1:
             memory[address] = p1 + p2
         # mul
         elif opcode == 2:
             memory[address] = p1 * p2
+        # input
+        elif opcode == 3:
+            memory[address] = user_input
+        # output
+        elif opcode == 4:
+            print(f'Output ({user_input}): ', p1)
         # jump if true
         elif opcode == 5:
             pointer = p2 if p1 != 0 else pointer + 3
