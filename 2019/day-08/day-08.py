@@ -12,7 +12,6 @@ def get_layers(width, height):
 def part1():
     layers = get_layers(25, 6)
     fewest_0 = sorted(layers, key=lambda layer: layer.count(0))[0]
-
     return fewest_0.count(1) * fewest_0.count(2)
 
 
@@ -21,7 +20,6 @@ def part2():
     for pixels in zip(*get_layers(25, 6)):
         final_image.append(
             next("◼" if p == 1 else '_' for p in pixels if p == 0 or p == 1))
-
     return ''.join(final_image)
 
 
