@@ -1,8 +1,6 @@
-import textwrap
-
 with open('2019/day-08/input.txt', 'r') as file:
     pixel = list(map(int, file.read()))
-    step = 25 * 6
+    width, step = 25, 25 * 6
     layers = [pixel[i:i + step] for i in range(0, len(pixel), step)]
 
 
@@ -12,14 +10,15 @@ def part1():
 
 
 def part2():
-    final_image = []
+    image = []
     for pixels in zip(*layers):
-        final_image.append(
+        image.append(
             next("◼" if p == 1 else '_' for p in pixels if p == 0 or p == 1))
-    return ''.join(final_image)
+    image = ''.join(image)
+    return [image[i:i + width] for i in range(0, len(image), width)]
 
 
 print(f"Part 1: {part1()}")
 print("Part 2:")
-for line in textwrap.TextWrapper(width=25).wrap(text=part2()):
+for line in part2():
     print(line)
