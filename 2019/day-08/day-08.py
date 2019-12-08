@@ -18,9 +18,9 @@ def part1():
 
 def part2():
     final_image = []
-    for layer in zip(*get_layers(25, 6)):
+    for pixels in zip(*get_layers(25, 6)):
         final_image.append(
-            next("◼" if p == 1 else '_' for p in layer if p == 0 or p == 1))
+            next("◼" if p == 1 else '_' for p in pixels if p == 0 or p == 1))
 
     return ''.join(final_image)
 
