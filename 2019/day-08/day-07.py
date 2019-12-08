@@ -1,5 +1,3 @@
-
-import itertools
 with open('2019/day-08/input.txt', 'r') as file:
     numbers = list(map(int, file.read()))
 
