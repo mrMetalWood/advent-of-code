@@ -1,7 +1,7 @@
 with open('2019/day-08/input.txt', 'r') as file:
     pixel = list(map(int, file.read()))
-    width, step = 25, 25 * 6
-    layers = [pixel[i:i + step] for i in range(0, len(pixel), step)]
+    width, size = 25, 25 * 6
+    layers = [pixel[i:i + size] for i in range(0, len(pixel), size)]
 
 
 def part1():
