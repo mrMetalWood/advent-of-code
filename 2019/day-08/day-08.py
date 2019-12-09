@@ -13,7 +13,7 @@ def part2():
     image = []
     for pixels in zip(*layers):
         image.append(
-            next("◼" if p == 1 else '_' for p in pixels if p == 0 or p == 1)
+            next("█" if p == 1 else ' ' for p in pixels if p == 0 or p == 1)
         )
     return [image[i:i + width] for i in range(0, len(image), width)]
 
