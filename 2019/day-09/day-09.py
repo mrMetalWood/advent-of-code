@@ -61,10 +61,7 @@ def run_intcode_program(memory, pointer, relative_base, inputs):
     print('Halting...')
 
 
-memory = defaultdict(int)
-for i, n in enumerate(numbers):
-    memory[i] = n
-
+memory = defaultdict(int, enumerate(numbers))
 
 run_intcode_program(memory.copy(), 0, 0, [1])  # part 1
 run_intcode_program(memory.copy(), 0, 0, [2])  # part 2
