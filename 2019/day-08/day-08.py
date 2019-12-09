@@ -13,12 +13,12 @@ def part2():
     image = []
     for pixels in zip(*layers):
         image.append(
-            next("◼" if p == 1 else '_' for p in pixels if p == 0 or p == 1))
-    image = ''.join(image)
+            next("◼" if p == 1 else '_' for p in pixels if p == 0 or p == 1)
+        )
     return [image[i:i + width] for i in range(0, len(image), width)]
 
 
 print(f"Part 1: {part1()}")
 print("Part 2:")
 for line in part2():
-    print(line)
+    print(''.join(line))
