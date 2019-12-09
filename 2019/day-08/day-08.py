@@ -5,7 +5,7 @@ with open('2019/day-08/input.txt', 'r') as file:
 
 
 def part1():
-    fewest_0 = sorted(layers, key=lambda layer: layer.count(0))[0]
+    fewest_0 = min(layers, key=lambda layer: layer.count(0))
     return fewest_0.count(1) * fewest_0.count(2)
 
 
