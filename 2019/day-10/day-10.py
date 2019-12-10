@@ -12,43 +12,28 @@ for y, line in enumerate(lines):
             asteroids.append((x, y))
 
 
-def view_is_blocked(start, middle, end):
-    startX, startY = start
-    middleX, middleY = middle
-    endX, endY = end
-
-    is_vertical = startX == middleX or startX == endX
-    is_horizontal = startY == middleY or startY == endY
-
-    in_vertical_range = startY < middleY < endY or startY > middleY > endY
-    in_horizontal_range = startX < middleX < endX or startX > middleX > endX
-
-    if is_vertical:
-        return in_vertical_range and startX == middleX == endX
-    if is_horizontal:
-        return in_horizontal_range and startY == middleY == endY
-
-    slope_to_end = (endY - startY) / (endX - startX)
-    slope_to_middle = (middleY - startY) / (middleX - startX)
-
-    if slope_to_end == slope_to_middle and in_vertical_range and in_horizontal_range:
-        return True
-
-    return False
-
-
 def part1():
     count = defaultdict(int)
     for start in asteroids:
-        asts2 = asteroids.copy()
-        asts2.remove(start)
-        for end in asts2:
-            asts3 = asts2.copy()
-            asts3.remove(end)
-            if any([view_is_blocked(start, middle, end) for middle in asts3]):
-                # something is blocking the view
-                pass
-            else:
+        asteroids_copy = asteroids.copy()
+        asteroids_copy.remove(start)
+        for end in asteroids_copy:
+
+            # translate to origin
+            new_end_x = end[0] - start[0]
+            new_end_y = end[1] - start[1]
+
+            gcd = math.gcd(new_end_x, new_end_y)
+
+            visible = True
+            for i in range(1, gcd):
+                next_x_on_line = start[0] + new_end_x / gcd * i
+                next_y_on_line = start[1] + new_end_y / gcd * i
+
+                if (next_x_on_line, next_y_on_line) in asteroids:
+                    visible = False
+
+            if visible:
                 count[start] = count[start] + 1
 
     return max(list(count.items()), key=lambda i: i[1])
@@ -87,7 +72,7 @@ def part2(laser_base):
     return vaporized[-1][0] * 100 + vaporized[-1][1]
 
 
-# print(f"Part 1: {part1()[1]}") # runs about 20 sec.
+print(f"Part 1: {part1()[1]}")
 
 # output from part1 ((22, 19), 282)
-print(f"Part 2: {part2((22, 19))}")
+print(f"Part 2: {part2(part1()[0])}")
