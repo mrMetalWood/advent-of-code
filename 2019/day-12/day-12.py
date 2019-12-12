@@ -42,9 +42,8 @@ class Moon:
         return self.get_potential_energy() * self.get_kinetic_energy()
 
 
-def iterate(moons):
-    moon_combinations = itertools.combinations(moons, 2)
-    for (first, second) in moon_combinations:
+def next_step(moons):
+    for (first, second) in itertools.combinations(moons, 2):
         new_vel_first = [0, 0, 0]
 
         if first.pos_x < second.pos_x:
@@ -74,7 +73,7 @@ def iterate(moons):
 def part1():
     moons = [Moon(position) for position in start_positions]
     for i in range(1000):
-        moons = iterate(moons)
+        moons = next_step(moons)
 
     return sum(map(lambda moon: moon.get_energy(), moons))
 
@@ -90,7 +89,7 @@ def part2():
         if found_x and found_y and found_z:
             break
 
-        moons = iterate(moons)
+        moons = next_step(moons)
 
         if not found_x:
             x = str([[m.pos_x, m.vel_x] for m in moons])
