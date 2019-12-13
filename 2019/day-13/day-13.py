@@ -102,15 +102,15 @@ def part2():
         if result == None:
             break
 
-        [x, y, id] = result
+        [x, y, value] = result
 
-        if id == 4:
+        if value == 4:
             ball_x = x
-        if id == 3:
+        if value == 3:
             paddle_x = x
 
         if x == -1 and y == 0:
-            score = id
+            score = value
 
         if ball_x < paddle_x:
             joystick = -1
