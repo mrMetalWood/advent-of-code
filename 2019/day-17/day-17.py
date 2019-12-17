@@ -98,13 +98,12 @@ def part1():
             coords[(col, row)] = chr(result[0])
             col += 1
 
-    # grid = list(map(lambda key: coords[key], coords))
-    # for i in range(0, len(grid) + 1, 49):
-    #     part = grid[i: i+49]
-    #     print(''.join(part))
-
     max_x = max(coords, key=lambda p: p[0])[0]
     max_y = max(coords, key=lambda p: p[1])[1]
+
+    # grid = list(map(lambda point: coords[point], coords))
+    # for i in range(0, len(grid), max_x + 1):
+    #     print(''.join(grid[i: i + max_x + 1]))
 
     intersections = filter(
         lambda point: is_intersection(*point, max_x, max_y), coords
