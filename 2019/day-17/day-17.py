@@ -67,18 +67,22 @@ def run_intcode_program(memory, pointer, relative_base, inp):
 
 def part1():
     coords = {}
-    memory = defaultdict(int, enumerate(numbers))
-    pointer = 0
-    relative_base = 0
     row = 0
     col = 0
 
-    def is_intersection(point):
-        dirs = [[1, 0], [-1, 0], [0, 1], [0, -1]]
-        max_x = max(coords, key=lambda point: point[0])
-        max_y = max(coords, key=lambda point: point[1])
+    memory = defaultdict(int, enumerate(numbers))
+    pointer = 0
+    relative_base = 0
 
-        return coords[point] == '#' and all(point[0] + d[0] >= 0 and point[0] + d[0] <= max_x[0] and point[1] + d[1] >= 0 and point[1] + d[1] <= max_y[1] and coords[(point[0] + d[0], point[1] + d[1])] == '#' for d in dirs)
+    directions = [(1, 0), (-1, 0), (0, 1), (0, -1)]
+
+    def is_intersection(x, y, max_x, max_y):
+        return coords[(x, y)] == '#' and all(
+            0 <= x + x_delta <= max_x and
+            0 <= y + y_delta <= max_y and
+            coords[(x + x_delta, y + y_delta)] == '#'
+            for (x_delta, y_delta) in directions
+        )
 
     while True:
         (result, memory, pointer, relative_base) = run_intcode_program(
@@ -94,71 +98,44 @@ def part1():
             coords[(col, row)] = chr(result[0])
             col += 1
 
-    grid = list(map(lambda key: coords[key], coords))
-    for i in range(0, len(grid) + 1, 49):
-        part = grid[i: i+49]
-        print(''.join(part))
+    # grid = list(map(lambda key: coords[key], coords))
+    # for i in range(0, len(grid) + 1, 49):
+    #     part = grid[i: i+49]
+    #     print(''.join(part))
 
-    intersections = []
-    for point in coords:
-        if is_intersection(point):
-            intersections.append(point)
+    max_x = max(coords, key=lambda p: p[0])[0]
+    max_y = max(coords, key=lambda p: p[1])[1]
+
+    intersections = filter(
+        lambda point: is_intersection(*point, max_x, max_y), coords
+    )
 
     return sum(map(lambda p: p[0] * p[1], intersections))
 
 
 def part2():
-    coords = {}
     memory = defaultdict(int, enumerate(numbers))
     memory[0] = 2
     pointer = 0
     relative_base = 0
 
-    # Got routines by looking at the grid
-    main_routine = [ord(x) for x in 'A,A,B,C,B,C,B,C,C,A']
-    main_routine.append(10)
+    # Got the routines manually by looking at the grid
+    main_routine = [ord(x) for x in 'A,A,B,C,B,C,B,C,C,A'] + [10]
+    func_a = [ord(x) for x in 'L,10,R,8,R,8'] + [10]
+    func_b = [ord(x) for x in 'L,10,L,12,R,8,R,10'] + [10]
+    func_c = [ord(x) for x in 'R,10,L,12,R,10'] + [10]
 
-    function_a = [ord(x) for x in 'L,10,R,8,R,8']
-    function_a.append(10)
-
-    function_b = [ord(x) for x in 'L,10,L,12,R,8,R,10']
-    function_b.append(10)
-
-    function_c = [ord(x) for x in 'R,10,L,12,R,10']
-    function_c.append(10)
-
-    inputs = main_routine + function_a + function_b + function_c
-
-    # video feed: NO
-    inputs.append(ord('n'))
-    inputs.append(10)
-
+    inputs = main_routine + func_a + func_b + func_c + [ord('n'), 10]
     inputs.reverse()
 
     output = 0
     while True:
         (result, memory, pointer, relative_base) = run_intcode_program(
             memory, pointer, relative_base, inputs)
-
         if result == None:
-            break
-
+            return output
         output = result[0]
-
-    return output
 
 
 print(f'Part 1: {part1()}')
 print(f'Part 2: {part2()}')
-
-# paths
-# L,10,R,8,R,8 (A)
-# L,10,R,8,R,8 (A)
-# L,10,L,12,R,8,R,10 (B)
-# R,10,L,12,R,10 (C)
-# L,10,L,12,R,8,R,10 (B)
-# R,10,L,12,R,10 (C)
-# L,10,L,12,R,8,R,10 (B)
-# R,10,L,12,R,10 (C)
-# R,10,L,12,R,10 (C)
-# L,10,R,8,R,8 (A)
