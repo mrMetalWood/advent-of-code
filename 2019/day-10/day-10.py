@@ -2,13 +2,13 @@ from collections import defaultdict
 import math
 import itertools
 
-with open('2019/day-10/input.txt', 'r') as file:
+with open("2019/day-10/input.txt", "r") as file:
     lines = [line.strip() for line in file.readlines()]
 
 asteroids = []
 for y, line in enumerate(lines):
     for x, cell in enumerate(line):
-        if cell == '#':
+        if cell == "#":
             asteroids.append((x, y))
 
 
@@ -46,20 +46,18 @@ def part2(laser_base):
 
     for asteroid in asteroids_copy:
         rad = myradians = math.atan2(
-            asteroid[1]-laser_base[1], asteroid[0]-laser_base[0]
+            asteroid[1] - laser_base[1], asteroid[0] - laser_base[0]
         )
         degrees[math.degrees(rad)].append(asteroid)
 
     shifted_degrees = []
     for degree, asteroids_for_degree in degrees.items():
         asteroids_by_distance = sorted(
-            asteroids_for_degree, key=lambda a: abs(
-                a[0] - laser_base[1]) + abs(a[1] - laser_base[1])
+            asteroids_for_degree,
+            key=lambda a: abs(a[0] - laser_base[1]) + abs(a[1] - laser_base[1]),
         )
         asteroids_by_distance.reverse()
-        shifted_degrees.append(
-            ((degree + 360 + 90) % 360, asteroids_by_distance)
-        )
+        shifted_degrees.append(((degree + 360 + 90) % 360, asteroids_by_distance))
 
     vaporized = []
     for degree in itertools.cycle(sorted(shifted_degrees, key=lambda i: i[0])):

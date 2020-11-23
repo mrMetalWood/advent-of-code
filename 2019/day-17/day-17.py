@@ -1,7 +1,7 @@
 from collections import defaultdict
 
-with open('2019/day-17/input.txt', 'r') as file:
-    numbers = list(map(int, file.read().split(',')))
+with open("2019/day-17/input.txt", "r") as file:
+    numbers = list(map(int, file.read().split(",")))
 
 
 def run_intcode_program(memory, pointer, relative_base, inp):
@@ -9,16 +9,16 @@ def run_intcode_program(memory, pointer, relative_base, inp):
 
     def get_value(memory_index, param_mode, read):
         value = memory[pointer + memory_index]
-        base = relative_base if param_mode == '2' else 0
+        base = relative_base if param_mode == "2" else 0
 
-        if param_mode in ['0', '2']:
+        if param_mode in ["0", "2"]:
             return memory[value + base] if read else value + base
-        if param_mode == '1':
+        if param_mode == "1":
             return value
 
     while int(str(memory[pointer])[-2:]) != 99:
         p3_mode, p2_mode, p1_mode, *op_split = str(memory[pointer]).zfill(5)
-        opcode = int(''.join(op_split))
+        opcode = int("".join(op_split))
 
         address_with_params = get_value(3, p3_mode, read=False)
         address_no_params = get_value(1, p1_mode, read=False)
@@ -61,7 +61,7 @@ def run_intcode_program(memory, pointer, relative_base, inp):
         pointer += 4 if opcode in [1, 2, 7, 8] else 0
         pointer += 2 if opcode in [3, 4, 9] else 0
 
-    print('Halting...')
+    print("Halting...")
     return (None, None, None, None)
 
 
@@ -77,16 +77,17 @@ def part1():
     directions = [(1, 0), (-1, 0), (0, 1), (0, -1)]
 
     def is_intersection(x, y, max_x, max_y):
-        return coords[(x, y)] == '#' and all(
-            0 <= x + x_delta <= max_x and
-            0 <= y + y_delta <= max_y and
-            coords[(x + x_delta, y + y_delta)] == '#'
+        return coords[(x, y)] == "#" and all(
+            0 <= x + x_delta <= max_x
+            and 0 <= y + y_delta <= max_y
+            and coords[(x + x_delta, y + y_delta)] == "#"
             for (x_delta, y_delta) in directions
         )
 
     while True:
         (result, memory, pointer, relative_base) = run_intcode_program(
-            memory, pointer, relative_base, 0)
+            memory, pointer, relative_base, 0
+        )
 
         if result == None:
             break
@@ -105,9 +106,7 @@ def part1():
     # for i in range(0, len(grid), max_x + 1):
     #     print(''.join(grid[i: i + max_x + 1]))
 
-    intersections = filter(
-        lambda point: is_intersection(*point, max_x, max_y), coords
-    )
+    intersections = filter(lambda point: is_intersection(*point, max_x, max_y), coords)
 
     return sum(map(lambda p: p[0] * p[1], intersections))
 
@@ -119,22 +118,23 @@ def part2():
     relative_base = 0
 
     # Got the routines manually by looking at the grid
-    main_routine = [ord(x) for x in 'A,A,B,C,B,C,B,C,C,A'] + [10]
-    func_a = [ord(x) for x in 'L,10,R,8,R,8'] + [10]
-    func_b = [ord(x) for x in 'L,10,L,12,R,8,R,10'] + [10]
-    func_c = [ord(x) for x in 'R,10,L,12,R,10'] + [10]
+    main_routine = [ord(x) for x in "A,A,B,C,B,C,B,C,C,A"] + [10]
+    func_a = [ord(x) for x in "L,10,R,8,R,8"] + [10]
+    func_b = [ord(x) for x in "L,10,L,12,R,8,R,10"] + [10]
+    func_c = [ord(x) for x in "R,10,L,12,R,10"] + [10]
 
-    inputs = main_routine + func_a + func_b + func_c + [ord('n'), 10]
+    inputs = main_routine + func_a + func_b + func_c + [ord("n"), 10]
     inputs.reverse()
 
     output = 0
     while True:
         (result, memory, pointer, relative_base) = run_intcode_program(
-            memory, pointer, relative_base, inputs)
+            memory, pointer, relative_base, inputs
+        )
         if result == None:
             return output
         output = result[0]
 
 
-print(f'Part 1: {part1()}')
-print(f'Part 2: {part2()}')
+print(f"Part 1: {part1()}")
+print(f"Part 2: {part2()}")

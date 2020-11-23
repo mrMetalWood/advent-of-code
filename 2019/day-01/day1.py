@@ -1,4 +1,4 @@
-with open('2019/day-01/input.txt', 'r') as file:
+with open("2019/day-01/input.txt", "r") as file:
     masses = list(map(int, file.readlines()))
 
 

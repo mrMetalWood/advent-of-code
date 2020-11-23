@@ -1,12 +1,7 @@
 import itertools
 import math
 
-start_positions = [
-    (12, 0, -15),
-    (-8, -5, -10),
-    (7, -17, 1),
-    (2, -11, -6)
-]
+start_positions = [(12, 0, -15), (-8, -5, -10), (7, -17, 1), (2, -11, -6)]
 
 
 def lcm(x, y):

@@ -8,7 +8,9 @@ def parse_password_range():
         decreased = atleast_double = exact_double = False
         last_digit = 0
 
-        for current, group in itertools.groupby(list(str(possible_password)), lambda x: x):
+        for current, group in itertools.groupby(
+            list(str(possible_password)), lambda x: x
+        ):
             count = len(list(group))
 
             atleast_double = True if count >= 2 else atleast_double
@@ -17,9 +19,7 @@ def parse_password_range():
 
             last_digit = int(current)
 
-        passwords[possible_password] = (
-            decreased, atleast_double, exact_double
-        )
+        passwords[possible_password] = (decreased, atleast_double, exact_double)
 
     return passwords
 

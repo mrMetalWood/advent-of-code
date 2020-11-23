@@ -1,5 +1,5 @@
-with open('2019/day-02/input.txt', 'r') as file:
-    numbers = list(map(int, file.read().split(',')))
+with open("2019/day-02/input.txt", "r") as file:
+    numbers = list(map(int, file.read().split(",")))
 
 
 def run_intcode_program(noun, verb):
@@ -10,7 +10,7 @@ def run_intcode_program(noun, verb):
     memory[2] = verb
 
     while memory[pointer] != 99:
-        opcode, param1, param2, address = memory[pointer: pointer + 4]
+        opcode, param1, param2, address = memory[pointer : pointer + 4]
 
         if opcode == 1:
             memory[address] = memory[param1] + memory[param2]

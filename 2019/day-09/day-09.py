@@ -1,23 +1,22 @@
 from collections import defaultdict
 
-with open('2019/day-09/input.txt', 'r') as file:
-    numbers = list(map(int, file.read().split(',')))
+with open("2019/day-09/input.txt", "r") as file:
+    numbers = list(map(int, file.read().split(",")))
 
 
 def run_intcode_program(memory, pointer, relative_base, inputs):
-
     def get_value(memory_index, param_mode, read):
         value = memory[pointer + memory_index]
-        base = relative_base if param_mode == '2' else 0
+        base = relative_base if param_mode == "2" else 0
 
-        if param_mode in ['0', '2']:
+        if param_mode in ["0", "2"]:
             return memory[value + base] if read else value + base
-        if param_mode == '1':
+        if param_mode == "1":
             return value
 
     while int(str(memory[pointer])[-2:]) != 99:
         p3_mode, p2_mode, p1_mode, *op_split = str(memory[pointer]).zfill(5)
-        opcode = int(''.join(op_split))
+        opcode = int("".join(op_split))
 
         address_with_params = get_value(3, p3_mode, read=False)
         address_no_params = get_value(1, p1_mode, read=False)
@@ -58,7 +57,7 @@ def run_intcode_program(memory, pointer, relative_base, inputs):
         pointer += 4 if opcode in [1, 2, 7, 8] else 0
         pointer += 2 if opcode in [3, 4, 9] else 0
 
-    print('Halting...')
+    print("Halting...")
 
 
 memory = defaultdict(int, enumerate(numbers))

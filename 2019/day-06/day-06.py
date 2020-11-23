@@ -1,10 +1,10 @@
-with open('2019/day-06/input.txt', 'r') as file:
-    p = [tuple(planet.strip().split(')')) for planet in file.readlines()]
+with open("2019/day-06/input.txt", "r") as file:
+    p = [tuple(planet.strip().split(")")) for planet in file.readlines()]
 
 
 def part1():
     planets = p.copy()
-    com = next(x for x in planets if x[0] == 'COM')
+    com = next(x for x in planets if x[0] == "COM")
     planets.remove(com)
     levels, level = [[com[1]]], 1
 
@@ -46,8 +46,8 @@ def get_path(start, planets):
 def part2():
     planets = p.copy()
 
-    path_santa = get_path(next(x for x in planets if x[1] == 'SAN'), planets)
-    path_you = get_path(next(x for x in planets if x[1] == 'YOU'), planets)
+    path_santa = get_path(next(x for x in planets if x[1] == "SAN"), planets)
+    path_you = get_path(next(x for x in planets if x[1] == "YOU"), planets)
 
     for index, planet in enumerate(path_you):
         if planet in path_santa:

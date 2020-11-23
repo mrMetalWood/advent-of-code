@@ -1,36 +1,33 @@
 import itertools
 
-with open('2019/day-07/input.txt', 'r') as file:
-    numbers = list(map(int, file.read().split(',')))
+with open("2019/day-07/input.txt", "r") as file:
+    numbers = list(map(int, file.read().split(",")))
 
 
 def get_value(pointer, memory, memory_index, param_mode):
     value = memory[pointer + memory_index]
-    return memory[value] if param_mode == '0' else value
+    return memory[value] if param_mode == "0" else value
 
 
 def run_intcode_program(memory, pointer, inputs):
-
     def is_safe(index, mode):
         immediate_safe = (pointer + index) < len(memory)
-        if mode == '1':
+        if mode == "1":
             return immediate_safe
 
         return immediate_safe and memory[pointer + index] < len(memory)
 
     while int(str(memory[pointer])[-2:]) != 99:
         p2_mode, p1_mode, *opcode_split = str(memory[pointer]).zfill(5)[1:]
-        opcode = int(''.join(opcode_split))
+        opcode = int("".join(opcode_split))
 
-        addr_params = memory[pointer + 3] if is_safe(3, '0') else None
-        addr_no_params = memory[pointer + 1] if is_safe(1, '0') else None
+        addr_params = memory[pointer + 3] if is_safe(3, "0") else None
+        addr_no_params = memory[pointer + 1] if is_safe(1, "0") else None
         has_params = opcode not in [3, 4]
         address = addr_params if has_params else addr_no_params
 
-        p1 = get_value(pointer,  memory, 1, p1_mode) if is_safe(
-            1, p1_mode) else None
-        p2 = get_value(pointer, memory, 2, p2_mode) if is_safe(
-            2, p2_mode) else None
+        p1 = get_value(pointer, memory, 1, p1_mode) if is_safe(1, p1_mode) else None
+        p2 = get_value(pointer, memory, 2, p2_mode) if is_safe(2, p2_mode) else None
 
         # add
         if opcode == 1:
@@ -70,9 +67,7 @@ def part1():
     for perm in phases_permutation:
         memory = numbers.copy()
         for phase in perm:
-            (result, memory, pointer) = run_intcode_program(
-                memory, 0, [result, phase]
-            )
+            (result, memory, pointer) = run_intcode_program(memory, 0, [result, phase])
             signals.append(result)
         result = 0
     return max(signals)
@@ -86,26 +81,30 @@ def part2():
         current_result = phase_result = 0
 
         amps = {
-            'A': [numbers.copy(), 0, permutation[0]],
-            'B': [numbers.copy(), 0, permutation[1]],
-            'C': [numbers.copy(), 0, permutation[2]],
-            'D': [numbers.copy(), 0, permutation[3]],
-            'E': [numbers.copy(), 0, permutation[4]],
+            "A": [numbers.copy(), 0, permutation[0]],
+            "B": [numbers.copy(), 0, permutation[1]],
+            "C": [numbers.copy(), 0, permutation[2]],
+            "D": [numbers.copy(), 0, permutation[3]],
+            "E": [numbers.copy(), 0, permutation[4]],
         }
 
         for key in itertools.cycle(amps):
-            inputs = [current_result, amps[key][2]] if len(
-                amps[key]) == 3 else [current_result]
+            inputs = (
+                [current_result, amps[key][2]]
+                if len(amps[key]) == 3
+                else [current_result]
+            )
 
             (current_result, memory, pointer) = run_intcode_program(
-                amps[key][0], amps[key][1], inputs)
+                amps[key][0], amps[key][1], inputs
+            )
 
             if not current_result:
                 signals.append(phase_result)
                 break
 
             amps[key] = [memory, pointer]
-            phase_result = current_result if key == 'E' else phase_result
+            phase_result = current_result if key == "E" else phase_result
 
     return max(signals)
 
