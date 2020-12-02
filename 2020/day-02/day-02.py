@@ -1,9 +1,7 @@
 import os
 import re
 
-
 input_file = os.path.join(os.path.dirname(__file__), "input.txt")
-
 
 with open(input_file, "r") as file:
     items = [re.split("-| |: ", l.strip()) for l in file.readlines()]
