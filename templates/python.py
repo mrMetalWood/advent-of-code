@@ -5,10 +5,7 @@ import math
 import os
 import re
 
-
-input_file = os.path.join(os.path.dirname(__file__), "input.txt")
-
-with open(input_file, "r") as file:
+with open(os.path.join(os.path.dirname(__file__), "input.txt"), "r") as file:
     # numbers on single line without separator
     # numbers = [int(n) for n in file.read()]
 
