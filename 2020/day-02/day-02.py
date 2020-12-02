@@ -10,15 +10,15 @@ with open(input_file, "r") as file:
 
 
 def part1():
-    def is_valid(min, max, char, password):
-        return int(min) <= password.count(char) <= int(max)
+    def is_valid(min, max, char, pw):
+        return int(min) <= pw.count(char) <= int(max)
 
     return len(list(filter(lambda item: is_valid(*item), items)))
 
 
 def part2():
-    def is_valid(idx1, idx2, char, password):
-        return (password[int(idx1) - 1] == char) != (password[int(idx2) - 1] == char)
+    def is_valid(idx1, idx2, char, pw):
+        return (pw[int(idx1) - 1] == char) != (pw[int(idx2) - 1] == char)
 
     return len(list(filter(lambda item: is_valid(*item), items)))
 

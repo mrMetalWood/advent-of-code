@@ -3,6 +3,7 @@ from collections import deque
 import itertools
 import math
 import os
+import re
 
 
 input_file = os.path.join(os.path.dirname(__file__), "input.txt")
@@ -19,6 +20,9 @@ with open(input_file, "r") as file:
 
     # tuple split by "(" on multiple lines
     # items = [tuple(l.strip().split(")")) for l in file.readlines()]
+
+    # multiple separators
+    # items = [re.split("-| |: ", l.strip()) for l in file.readlines()]
 
 
 def part1():
