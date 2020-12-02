@@ -6,17 +6,19 @@ with open(os.path.join(os.path.dirname(__file__), "input.txt"), "r") as file:
 
 
 def part1():
-    def is_valid(min, max, char, pw):
-        return int(min) <= pw.count(char) <= int(max)
-
-    return len(list(filter(lambda item: is_valid(*item), items)))
+    return len(
+        [pw for (min, max, c, pw) in items if int(min) <= pw.count(c) <= int(max)]
+    )
 
 
 def part2():
-    def is_valid(idx1, idx2, char, pw):
-        return (pw[int(idx1) - 1] == char) != (pw[int(idx2) - 1] == char)
-
-    return len(list(filter(lambda item: is_valid(*item), items)))
+    return len(
+        [
+            pw
+            for (i1, i2, c, pw) in items
+            if (pw[int(i1) - 1] == c) != (pw[int(i2) - 1] == c)
+        ]
+    )
 
 
 print(f"Part 1: {part1()}")  # 483
