@@ -23,18 +23,10 @@ def part1():
 
 
 def part2():
-    valid = 0
-    for index1, index2, letter, password in items:
-        count = 0
+    def is_valid(index1, index2, letter, password):
+        return (password[index1 - 1] == letter) != (password[index2 - 1] == letter)
 
-        if password[index1 - 1] == letter:
-            count += 1
-        if password[index2 - 1] == letter:
-            count += 1
-
-        if count == 1:
-            valid += 1
-    return valid
+    return len(list(filter(lambda item: is_valid(*item), items)))
 
 
 print(f"Part 1: {part1()}")  # 483
