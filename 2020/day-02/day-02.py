@@ -16,7 +16,7 @@ def part2():
         [
             pw
             for (i1, i2, c, pw) in items
-            if (pw[int(i1) - 1] == c) != (pw[int(i2) - 1] == c)
+            if (pw[int(i1) - 1] == c) ^ (pw[int(i2) - 1] == c)
         ]
     )
 
