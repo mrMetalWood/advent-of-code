@@ -2,21 +2,8 @@ import os
 import re
 
 with open(os.path.join(os.path.dirname(__file__), "input.txt"), "r") as file:
-    lines = [l.strip() for l in file.readlines()]
-    lines.append("")
-
-    passports = []
-    passport = {}
-
-    for line in lines:
-        if not line:
-            passports.append(passport)
-            passport = {}
-        else:
-            items = line.split(" ")
-            for item in items:
-                key, value = item.split(":")
-                passport[key] = value
+    paragraphs = [line.strip() for line in file.read().split("\n\n")]
+    passports = [dict(tuple(item.split(":")) for item in p.split()) for p in paragraphs]
 
 
 def has_all_fields(passport):
