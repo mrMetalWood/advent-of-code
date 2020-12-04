@@ -2,7 +2,6 @@ import os
 import re
 
 with open(os.path.join(os.path.dirname(__file__), "input.txt"), "r") as file:
-
     lines = [l.strip() for l in file.readlines()]
     lines.append("")
 
