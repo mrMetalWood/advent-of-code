@@ -2,7 +2,6 @@ import os
 import re
 
 with open(os.path.join(os.path.dirname(__file__), "input.txt"), "r") as file:
-    # parsing tweaked with https://www.reddit.com/r/adventofcode/comments/k6e8sw/2020_day_04_solutions/gekjg4z/?utm_source=reddit&utm_medium=web2x&context=3
     paragraphs = [line.strip() for line in file.read().split("\n\n")]
     passports = [dict(tuple(item.split(":")) for item in p.split()) for p in paragraphs]
 
