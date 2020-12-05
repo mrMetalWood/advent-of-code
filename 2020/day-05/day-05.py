@@ -1,4 +1,3 @@
-import bisect
 with open("2020/day-05/input.txt", "r") as file:
     bin_map = {"F": "0", "B": "1", "L": "0", "R": "1"}
     ids = sorted([
