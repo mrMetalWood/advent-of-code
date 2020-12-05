@@ -1,7 +1,6 @@
 with open("2020/day-05/input.txt", "r") as file:
-    bin_map = {"F": "0", "B": "1", "L": "0", "R": "1"}
     ids = sorted([
-        int("".join([bin_map[i] for i in p[:7]]), 2) * 8 + int("".join([bin_map[i] for i in p[-3:]]), 2)
+        int("".join([str(int(i=="B")) for i in p[:7]]), 2) * 8 + int("".join([str(int(i=="R")) for i in p[-3:]]), 2)
         for p in [l.strip() for l in file.readlines()]
     ])
     print(f"Part 1: {ids[-1]}")  # 935
