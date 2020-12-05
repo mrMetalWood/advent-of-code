@@ -2,13 +2,13 @@ import math
 import os
 
 with open(os.path.join(os.path.dirname(__file__), "input.txt"), "r") as file:
-    boardingpasses = [l.strip() for l in file.readlines()]
+    passes = [l.strip() for l in file.readlines()]
     bin_map = {"F": "0", "B": "1", "L": "0", "R": "1"}
 
 ids = []
-for boardingpass in boardingpasses:
-    row = int("".join([bin_map[i] for i in boardingpass[:7]]), 2)
-    col = int("".join([bin_map[i] for i in boardingpass[-3:]]), 2)
+for p in passes:
+    row = int("".join([bin_map[i] for i in p[:7]]), 2)
+    col = int("".join([bin_map[i] for i in p[-3:]]), 2)
     ids.append(row * 8 + col)
 ids = sorted(ids)
 
