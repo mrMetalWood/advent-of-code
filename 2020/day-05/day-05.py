@@ -1,10 +1,9 @@
-import math
 import os
 
 with open(os.path.join(os.path.dirname(__file__), "input.txt"), "r") as file:
     passes = [l.strip() for l in file.readlines()]
-    bin_map = {"F": "0", "B": "1", "L": "0", "R": "1"}
 
+bin_map = {"F": "0", "B": "1", "L": "0", "R": "1"}
 ids = []
 for p in passes:
     row = int("".join([bin_map[i] for i in p[:7]]), 2)
