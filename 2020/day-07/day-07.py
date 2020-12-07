@@ -2,9 +2,8 @@ from collections import deque
 import os
 
 with open(os.path.join(os.path.dirname(__file__), "input.txt"), "r") as file:
-    rules = [l.strip() for l in file.readlines()]
     colors = {}
-    for rule in rules:
+    for rule in [l.strip() for l in file.readlines()]:
         color, contents = rule.split(" bags contain ")
         contents = [
             (" ".join(i.split()[1:3]), int(i.split()[0]))
@@ -15,7 +14,7 @@ with open(os.path.join(os.path.dirname(__file__), "input.txt"), "r") as file:
 
 
 def part1():
-    color_queue, color_with_shiny_gold = deque(["shiny gold"]), set()
+    color_queue, colors_with_shiny_gold = deque(["shiny gold"]), set()
 
     while color_queue:
         current_color = color_queue.popleft()
@@ -23,9 +22,9 @@ def part1():
             for (color_name, _) in colors[color]:
                 if color_name == current_color:
                     color_queue.append(color)
-                    color_with_shiny_gold.add(color)
+                    colors_with_shiny_gold.add(color)
 
-    return len(color_with_shiny_gold)
+    return len(colors_with_shiny_gold)
 
 
 def part2():
