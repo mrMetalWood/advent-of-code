@@ -28,19 +28,19 @@ def part1():
 def part2():
     global_acc = 0
     for i in range(len(instructions)):
-        instruction_copy, acc, pointer, seen = copy.deepcopy(instructions), 0, 0, []
+        instructions_copy, acc, pointer, seen = copy.deepcopy(instructions), 0, 0, []
 
-        if instruction_copy[i][0] == "jmp":
-            instruction_copy[i][0] = "nop"
-        elif instruction_copy[i][0] == "nop":
-            instruction_copy[i][0] = "jmp"
+        if instructions_copy[i][0] == "jmp":
+            instructions_copy[i][0] = "nop"
+        elif instructions_copy[i][0] == "nop":
+            instructions_copy[i][0] = "jmp"
 
         while pointer not in seen:
             seen.append(pointer)
-            if pointer == len(instruction_copy):
+            if pointer == len(instructions_copy):
                 global_acc = acc
                 break
-            acc, pointer = run(instruction_copy, acc, pointer)
+            acc, pointer = run(instructions_copy, acc, pointer)
 
     return global_acc
 
