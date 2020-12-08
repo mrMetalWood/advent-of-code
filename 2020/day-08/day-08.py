@@ -2,7 +2,7 @@ import os
 import copy
 
 with open(os.path.join(os.path.dirname(__file__), "input.txt"), "r") as file:
-    ins = [[l.split()[0], int(l.split()[1])] for l in file.readlines()]
+    instructions = [[l.split()[0], int(l.split()[1])] for l in file.readlines()]
 
 
 def run(instructions, acc, pointer):
@@ -21,26 +21,26 @@ def part1():
     acc, pointer, seen = 0, 0, []
     while pointer not in seen:
         seen.append(pointer)
-        acc, pointer = run(ins, acc, pointer)
+        acc, pointer = run(instructions, acc, pointer)
     return acc
 
 
 def part2():
     global_acc = 0
-    for i in range(len(ins)):
-        ins_copy, acc, pointer, seen = copy.deepcopy(ins), 0, 0, []
+    for i in range(len(instructions)):
+        instruction_copy, acc, pointer, seen = copy.deepcopy(instructions), 0, 0, []
 
-        if ins_copy[i][0] == "jmp":
-            ins_copy[i][0] = "nop"
-        elif ins_copy[i][0] == "nop":
-            ins_copy[i][0] = "jmp"
+        if instruction_copy[i][0] == "jmp":
+            instruction_copy[i][0] = "nop"
+        elif instruction_copy[i][0] == "nop":
+            instruction_copy[i][0] = "jmp"
 
         while pointer not in seen:
             seen.append(pointer)
-            if pointer == len(ins_copy):
+            if pointer == len(instruction_copy):
                 global_acc = acc
                 break
-            acc, pointer = run(ins_copy, acc, pointer)
+            acc, pointer = run(instruction_copy, acc, pointer)
 
     return global_acc
 
