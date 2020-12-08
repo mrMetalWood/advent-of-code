@@ -1,5 +1,5 @@
 import os
-import copy
+from copy import deepcopy
 
 with open(os.path.join(os.path.dirname(__file__), "input.txt"), "r") as file:
     instructions = [[l.split()[0], int(l.split()[1])] for l in file.readlines()]
@@ -28,7 +28,7 @@ def part1():
 def part2():
     global_acc = 0
     for i in range(len(instructions)):
-        instructions_copy, acc, pointer, seen = copy.deepcopy(instructions), 0, 0, []
+        instructions_copy, acc, pointer, seen = deepcopy(instructions), 0, 0, []
 
         if instructions_copy[i][0] == "jmp":
             instructions_copy[i][0] = "nop"
