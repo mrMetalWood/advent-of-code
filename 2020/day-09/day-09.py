@@ -7,9 +7,10 @@ with open(os.path.join(os.path.dirname(__file__), "input.txt"), "r") as file:
 
 def part1():
     for i in range(25, len(numbers)):
-        if not [
-            n1 for (n1, n2) in itertools.combinations(numbers[i - 25 : i], 2) if n1 + n2 == numbers[i]
-        ]:
+        if not any([
+                n1 + n2 == numbers[i]
+                for (n1, n2) in itertools.combinations(numbers[i - 25 : i], 2)
+        ]):
             return numbers[i]
 
 
