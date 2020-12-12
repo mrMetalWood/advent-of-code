@@ -13,9 +13,9 @@ def part1():
 
     for (op, val) in instructions:
         if op == "R":
-            current_dir = (current_dir + int(val / 90)) % len(DIRS)
+            current_dir = (current_dir + val // 90) % len(DIRS)
         elif op == "L":
-            current_dir = (current_dir - int(val / 90)) % len(DIRS)
+            current_dir = (current_dir - val // 90) % len(DIRS)
         elif op == "F":
             d = DIRS[current_dir]
             position = [position[0] + d[0] * val, position[1] + d[1] * val]
@@ -31,10 +31,10 @@ def part2():
 
     for (op, val) in instructions:
         if op == "L":
-            for _ in range(int(val / 90)):
+            for _ in range(val // 90):
                 waypoint = [waypoint[1] * -1, waypoint[0]]
         elif op == "R":
-            for _ in range(int(val / 90)):
+            for _ in range(val // 90):
                 waypoint = [waypoint[1], waypoint[0] * -1]
         elif op == "F":
             position = [
@@ -48,5 +48,5 @@ def part2():
     return abs(position[0]) + abs(position[1])
 
 
-print(f"Part d1: {part1()}")  # 1186
+print(f"Part 1: {part1()}")  # 1186
 print(f"Part 2: {part2()}")  # 47806
