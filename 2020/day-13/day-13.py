@@ -1,3 +1,4 @@
+import math
 import os
 
 with open(os.path.join(os.path.dirname(__file__), "input.txt"), "r") as file:
@@ -17,6 +18,10 @@ def part1():
     return id * min_time
 
 
+def lcm(a, b):
+    return abs(a * b) // math.gcd(a, b)
+
+
 def part2():
     busses = [(int(bus), i) for i, bus in enumerate(lines[1].split(",")) if bus != "x"]
     increment = busses[0][0]
@@ -25,7 +30,7 @@ def part2():
     for bus, offset in busses[1:]:
         while (time + offset) % bus != 0:
             time += increment
-        increment *= bus  # works because all busses are primes
+        increment = lcm(increment, bus)  # works because all busses are primes
 
     return time
 
