@@ -30,7 +30,7 @@ def part2():
     for bus, offset in busses[1:]:
         while (time + offset) % bus != 0:
             time += increment
-        increment = lcm(increment, bus)  # works because all busses are primes
+        increment = lcm(increment, bus)
 
     return time
 
