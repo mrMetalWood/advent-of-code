@@ -1,7 +1,7 @@
 from collections import defaultdict
 from collections import deque
 from functools import reduce
-import itertools
+import itertools as it
 import operator
 import math
 import os
