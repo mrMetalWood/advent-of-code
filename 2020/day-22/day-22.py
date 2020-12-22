@@ -56,10 +56,7 @@ def part2(player1, player2):
                 pl2.insert(0, p2_card)
                 pl2.insert(0, p1_card)
 
-        if pl1:
-            return "p1"
-        else:
-            return "p2"
+        return "p1" if pl1 else "p2"
 
     winning_player = game(player1, player2)
 
