@@ -14,15 +14,18 @@ def count_occurances(report_numbers):
     return counts
 
 
-def filter_list(l, idx, mode):
-    counts = count_occurances(l)
+def filter_list(l, mode):
+    idx = 0
+    while len(l) > 1:
+        counts = count_occurances(l)
+        if counts[idx]["0"] > counts[idx]["1"]:
+            l = list(filter(lambda b: b[idx] == ("0" if mode == "most" else "1"), l))
+        if counts[idx]["0"] < counts[idx]["1"]:
+            l = list(filter(lambda b: b[idx] == ("1" if mode == "most" else "0"), l))
+        if counts[idx]["0"] == counts[idx]["1"]:
+            l = list(filter(lambda b: b[idx] == ("1" if mode == "most" else "0"), l))
 
-    if counts[idx]["0"] > counts[idx]["1"]:
-        l = list(filter(lambda b: b[idx] == ("0" if mode == "most" else "1"), l))
-    if counts[idx]["0"] < counts[idx]["1"]:
-        l = list(filter(lambda b: b[idx] == ("1" if mode == "most" else "0"), l))
-    if counts[idx]["0"] == counts[idx]["1"]:
-        l = list(filter(lambda b: b[idx] == ("1" if mode == "most" else "0"), l))
+        idx += 1
 
     return l
 
@@ -43,17 +46,8 @@ def part1():
 
 
 def part2():
-    oxygen_list = co2_list = report_lines.copy()
-
-    idx1 = 0
-    while len(oxygen_list) > 1:
-        oxygen_list = filter_list(oxygen_list, idx1, "most")
-        idx1 += 1
-
-    idx2 = 0
-    while len(co2_list) > 1:
-        co2_list = filter_list(co2_list, idx2, "least")
-        idx2 += 1
+    oxygen_list = filter_list(report_lines.copy(), "most")
+    co2_list = filter_list(report_lines.copy(), "least")
 
     return int(oxygen_list[0], 2) * int(co2_list[0], 2)
 
