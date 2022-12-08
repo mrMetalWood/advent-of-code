@@ -10,19 +10,34 @@ import re
 
 with open(os.path.join(os.path.dirname(__file__), "input.txt"), "r") as file:
     # numbers on single line without separator
-    # numbers = [int(n) for n in file.read()]
+    numbers = [int(n) for n in file.read()]
 
     # single line numbers, comma separated
-    # numbers = [int(n) for n in file.read().split(",")]
+    numbers = [int(n) for n in file.read().split(",")]
 
     # numbers on multiple lines
     numbers = [int(l.strip()) for l in file.readlines()]
 
     # tuple split by "(" on multiple lines
-    # items = [tuple(l.strip().split(")")) for l in file.readlines()]
+    items = [tuple(l.strip().split(")")) for l in file.readlines()]
 
     # multiple separators
-    # items = [re.split("-| |: ", l.strip()) for l in file.readlines()]
+    items = [re.split("-| |: ", l.strip()) for l in file.readlines()]
+
+    # 2d grid
+    lines = [l.strip() for l in file.readlines()]
+    grid = defaultdict(lambda: -1)
+
+    for y, row in enumerate(lines):
+        for x, cell in enumerate(row):
+            grid[(x, y)] = int(cell)
+
+    directions = [
+        [0, -1],  # top
+        [1, 0],  # right
+        [0, 1],  # bottom
+        [-1, 0],  # left
+    ]
 
 
 def part1():
